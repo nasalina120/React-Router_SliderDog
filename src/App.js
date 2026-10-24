@@ -4,7 +4,7 @@ import HomePage from "./component/main/HomePage";
 import Components from "./component/main/Components";
 import About from "./component/main/About";
 import NotFound from "./component/main/NotFound";
-import { useEffect } from "react";
+
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {

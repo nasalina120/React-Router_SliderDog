@@ -18,24 +18,16 @@ export default function AnimalSlider() {
 
   const nextDog = () => {
     if (!hasDogs) return;
-
-    setCurrentIndex((prevIndex) => {
-      if (prevIndex < DOGS_COLLECTION.length - 1) {
-        return prevIndex + 1;
-      }
-      return prevIndex;
-    });
+    setCurrentIndex((prevIndex) =>
+      prevIndex === DOGS_COLLECTION.length - 1 ? 0 : prevIndex + 1,
+    );
   };
 
   const prevDog = () => {
     if (!hasDogs) return;
-
-    setCurrentIndex((prevIndex) => {
-      if (prevIndex > 0) {
-        return prevIndex - 1;
-      }
-      return prevIndex;
-    });
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? DOGS_COLLECTION.length - 1 : prevIndex - 1,
+    );
   };
 
   const changePlay = () => {
@@ -44,12 +36,13 @@ export default function AnimalSlider() {
 
   useEffect(() => {
     let timerId = null;
-    if (isPlaying) {
+    if (isPlaying && hasDogs) {
       timerId = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % DOGS_COLLECTION.length);
+        setCurrentIndex((prevIndex) =>
+          prevIndex === DOGS_COLLECTION.length - 1 ? 0 : prevIndex + 1,
+        );
       }, currentTime);
     }
-
     return () => {
       clearInterval(timerId);
     };

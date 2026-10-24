@@ -1,6 +1,6 @@
 import { NavLink, Routes, Route } from "react-router-dom";
 import AnimalSlider from "../Animal/index.jsx";
-import styles from "./Components.module.sass"; // Подключим простые стили
+import styles from "./Components.module.sass";
 
 function Components() {
   return (
